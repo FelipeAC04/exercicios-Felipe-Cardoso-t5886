@@ -39,12 +39,9 @@ console.log(animal2.includes("leão"))
 
 // 5. Crie uma variável chamada `fruta3` que contenha a string "abacaxi", substitua todas as letras "a" por "o".
 
-let fruta3 = "a"
-let fruta32 = "ba"
-let fruta33 = "caxi"
+let fruta3 = "abacaxi"
 
-console.log(fruta3.replace("a" , "o") + fruta32.replace("a","o") + fruta33.replace("a", "o"))
-
+console.log(fruta3.replaceAll("a" , "o"))
 
 // 6. Crie uma constante chamada `animal3` que contenha a string "cachorro", e verifique se a palavra "carro" está incluída nela.
 
