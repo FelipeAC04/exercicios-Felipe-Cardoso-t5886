@@ -88,7 +88,7 @@ if (tipoDeOperacao.toUpperCase() === 'CO')
 } else if (tipoDeOperacao.toUpperCase() === 'TR') 
     {if (quantiaDeEspeciarias < 20) {console.log(`\nlider da operaçao: ${nomeLiderdaoperacao.toUpperCase()} \ntipo de operacao: ${tipoDeOperacao.toUpperCase()} \ntotal de especiarias: ${Number(quantiaDeEspeciarias)} toneladas \nvalor esperado: ${Number((operacaoTR + 500) * quantiaDeEspeciarias)} solaris`)
 }}
-*/
+
 
 // 6.
 // Crie uma string //string? é variavel sooooooooooor// 'nome' com o valor "  Alvo Dumbledore  ". Remova os espaços, transforme o nome para maiúsculas e retorne a quantidade de caracteres do nome.
@@ -104,23 +104,88 @@ console.log(nome.trim().toUpperCase(),"quantos digitos possui?", nome.trim().toU
 let naves = ["X-Wing", "TIE Fighter", "Millennium Falcon"]
 naves.pop(), naves.unshift("Star Destroyer")
 
-console.log("TIE Fighter esta no array?",naves.includes("TIE Fighter"))
+console.log("TIE Fighter esta no array?",naves.includes("TIE Fighter"))*/
 
 /*8.
 Você foi contratado pela WOOHP para criar um sistema de planejamento de missões. Para cada missão, os detalhes incluem o nome da espiã, o tipo de missão (RE para resgate, IN para infiltração, DE para desativação) e o nível de risco da missão (AL para alto, ME para médio, BA para baixo). Dependendo da combinação do tipo de missão e do nível de risco, o sistema deve determinar o tempo estimado de conclusão e a quantidade de gadgets necessários:
-    - Missões de resgate (RE) com alto risco (AL) levam 5 horas e requerem 4 gadgets, missões de risco médio (ME) levam 3 horas e requerem 3 gadgets, e de baixo risco (BA) levam 2 horas com 2 gadgets.
-    - Missões de infiltração (IN) sempre levam 4 horas, mas o número de gadgets depende do risco: 5 gadgets para AL, 3 para ME e 2 para BA.
-    - Missões de desativação (DE) têm um tempo fixo de 6 horas, independentemente do risco, mas o número de gadgets é 3 para AL, 2 para ME e 1 para BA.
+    
+- Missões de resgate (RE) com alto risco (AL) levam 5 horas e requerem 4 gadgets, missões de risco médio (ME) levam 3 horas e requerem 3 gadgets, e de baixo risco (BA) levam 2 horas com 2 gadgets.
+   
+- Missões de infiltração (IN) sempre levam 4 horas, mas o número de gadgets depende do risco: 5 gadgets para AL, 3 para ME e 2 para BA.
+   
+- Missões de desativação (DE) têm um tempo fixo de 6 horas, independentemente do risco, mas o número de gadgets é 3 para AL, 2 para ME e 1 para BA.
+
 O sistema deve imprimir o nome da espiã, o tipo de missão, o nível de risco, o tempo estimado de conclusão e a quantidade de gadgets necessários.
 */
 
 const ask = require('readline-sync')
 
-let nomeEspia= ask.question('qual é seu nome? ')
-let missao = ask.question('qual é o tipo de missao? RE, IN ou DE? ')
-let risco = ask.question('qual o risco da missao escolhida? ')
+let nomeEspia= ask.question('qual eh seu nome? ')
+let missao = ask.question('qual eh o tipo de missao? RE, IN ou DE? ')
+let risco = ask.question('qual o risco da missao escolhida? AL, ME ou BA?')
 
-if (missao.toUpperCase() === 'RE') {}
+let gadgets 
+let tempo 
+
+switch (missao.toUpperCase()){
+case 'RE':
+switch (risco.toUpperCase()) {
+case 'AL':
+tempo = 5
+gadgets = 4
+break;
+case 'ME':
+tempo = 3
+gadegets = 3
+break;
+case 'BA':
+tempo = 2
+gadgets = 2
+break;
+default:
+console.log('erro')
+break;
+}
+ 
+case 'IN':
+switch (risco.toUpperCase()) {
+case 'AL':
+tempo = 4
+gadgets = 5
+break;
+case 'ME':
+tempo = 4
+gadgets = 3
+break;
+case 'BA':
+tempo = 4
+gadgets = 2
+break;
+default:
+console.log('erro')}
+} 
+
+case 'DE':     
+switch (risco.toUpperCase()) {
+case 'AL':
+tempo = 6
+gadgets = 3
+break;
+case 'ME':
+tempo = 6
+gadgets = 2
+break;
+case 'BA':
+tempo = 6
+gadgets = 1
+break;
+default:
+console.log('erro')
+}
+
+
+}
+console.log(`\nNome: ${nomeEspia} \nTipo de missão: ${missao} \nRisco de missão: ${risco} \nTempo estimado: ${tempo} \ngadgets necessarios: ${gadgets}`)
 
 
 
