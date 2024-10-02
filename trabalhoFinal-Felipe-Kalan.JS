@@ -1,8 +1,8 @@
-// Nomes: Felipe e Kalan //
+// Nomes: Felipe e Kalan//
 const ask = require("readline-sync")
 
 
-let doadores = []  //"banco de dados" falso (array) onde os objetos ficaram armazenados durantre a execução do codigo //
+let doadores = []  //"banco de dados" falso (array) onde os objetos ficaram armazenados durante a execução do codigo //
 
 let sairDoProgramaOuFicar = true // variavel que mantem o main menu funcionando //
 
@@ -15,10 +15,10 @@ function cadastrarNovoDoador() {
     let nome = ask.question('Digite o nome do doador --> ')
     let idade = ask.question('Digite a idade do doador --> ')
     let peso = ask.question('Digite o peso do doador (somente o numero) --> ')
-    let tipoSanguineo = ask.question('Digite o tipo sanguineo do doador (A +-, B +-, AB +-, O +-) --> ')
+    let tipoSanguineo = ask.question('Digite o tipo sanguineo do doador (A +-, B +-, AB +- ou O +-) --> ')
     let dataDaUltimaDoacao = ask.question('Digite o ultimo  dia / mes / ano, em que o paciente fez a doacao --> ')
 
-    let doador = { // cria uma nova varivel auxiliar com os dados que o usuario deu //
+    let doador = { // cria uma nova varivel com os dados que o usuario deu a armazena dentro do array de doadores //
         nome: nome,
         idade: idade,
         peso: peso + 'kg',
@@ -28,7 +28,17 @@ function cadastrarNovoDoador() {
 
     doadores.push(doador) // armazena no bancos de dados falso os dados cedidos pelo usuario//
     console.clear()
-    console.log(`Doador ${nome} cadastrado!`)
+    console.log(`Doador ${nome} cadastrado!\n`)
+
+    console.log(`Uma bolsa de sangue doada pode salvar até 4 vidas!`)
+
+    console.log("                                                \n" +
+        "                 |_______________________               \n" +
+        "         |_______|  |  |  |  |  |  |  |  |__            \n" +
+        "         |_______|                       |__|-------    \n" +
+        "         |       |_______________________|              \n" +
+        "                 |                                      \n")
+
     ask.question('tecle enter para continuar ')
     console.clear()
 }
@@ -42,7 +52,7 @@ function listarDoadores() {
     console.clear()
     if (doadores.length > 0) { // se a quantia de doadores encontrados pela logica da função for maior que 0, o menu com as informaçoes sera impresso //
         console.log(
-            `--------------------
+            `\n--------------------
 LISTAGEM DE DOADORES:
 --------------------
 NOME | IDADE | PESO | TIPO SANGUÍNEO | ÚLTIMA DOAÇÃO
@@ -57,10 +67,10 @@ NOME | IDADE | PESO | TIPO SANGUÍNEO | ÚLTIMA DOAÇÃO
                 `${doador.dataDaUltimaDoacao}`
             )
         })
-        console.log(`-----------------------------------------------------------------`) // utilizo o padEnd para que os dados dos doadores se encaixem no menu //
+        console.log(`-----------------------------------------------------------------\n`) // utilizo o padEnd para que os dados dos doadores se encaixem no menu //
 
     } else {
-        console.log('Nenhum doador cadastrado.')
+        console.log('Nenhum doador cadastrado')
     }
     ask.question('Tecle enter para voltar ')
     console.clear()
@@ -76,7 +86,7 @@ function buscarDoadorPorTipoSanguineo() {
 
     if (tipoSanguineoEncontrado.length > 0) { // se a quantia de doadores encontrados pela logica da função for maior que 0, o menu com as informaçoes sera impresso //
         console.log(
-            `--------------------
+            `\n--------------------
 LISTAGEM DE DOADORES:
 --------------------
 NOME | IDADE | PESO | TIPO SANGUÍNEO | ÚLTIMA DOAÇÃO
@@ -91,12 +101,12 @@ NOME | IDADE | PESO | TIPO SANGUÍNEO | ÚLTIMA DOAÇÃO
                 `${doador.dataDaUltimaDoacao}`
             )
         })
-        console.log(`-----------------------------------------------------------------`) // utilizo o padEnd para que os dados dos doadores se encaixem no menu //
+        console.log(`-----------------------------------------------------------------\n`) // utilizo o padEnd para que os dados dos doadores se encaixem no menu //
 
     } else {
         console.log("Não foram encontrados doadores com o tipo sanguíneo escolhido!")
     }
-    ask.question("Digite enter para voltar ")
+    ask.question("tecle enter para voltar ")
     console.clear()
 }
 
@@ -113,7 +123,7 @@ function converteAData(data) {
 
 // a função abaixo busca os ultimos doadores de acordo com a data escolhida pelo usuario //
 
-function buscarDoadorPorDataDaUltimaDoação() {
+function buscarDoadorPorDataDaUltimaDoacao() {
     console.clear()
     let dataProcurada = ask.question("Por qual data de doacao voce deseja procurar (dd/mm/aaaa) --> ")
     let dataFormatada = converteAData(dataProcurada)
@@ -125,7 +135,7 @@ function buscarDoadorPorDataDaUltimaDoação() {
 
     if (doadoresEncontrados.length > 0) { // se a quantia de doadores encontrados pela logica da função for maior que 0, o menu com as informaçoes sera impresso //
         console.log(
-            `--------------------
+            `\n--------------------
 LISTAGEM DE DOADORES:
 --------------------
 NOME | IDADE | PESO | TIPO SANGUÍNEO | ÚLTIMA DOAÇÃO
@@ -140,12 +150,12 @@ NOME | IDADE | PESO | TIPO SANGUÍNEO | ÚLTIMA DOAÇÃO
                 `${doador.dataDaUltimaDoacao}`
             )
         })
-        console.log(`-----------------------------------------------------------------`) // utilizo o padEnd para que os dados dos doadores se encaixem no menu //
+        console.log(`-----------------------------------------------------------------\n`) // utilizo o padEnd para que os dados dos doadores se encaixem no menu //
 
     } else {
         console.log("Não foram encontrados doadores com a data escolhida!")
     }
-    ask.question("Digite enter para voltar ")
+    ask.question("tecle enter para voltar ")
     console.clear()
 }
 
@@ -155,6 +165,7 @@ NOME | IDADE | PESO | TIPO SANGUÍNEO | ÚLTIMA DOAÇÃO
 
 function sairDoPrograma() {
     sairDoProgramaOuFicar = false // agora a variavel que mantem o main menu funcionando recebe false, portanto o programa termina //
+    console.log("obrigado por usar nosso sistema!")
     console.log("programa terminando...")
 }
 
@@ -164,20 +175,21 @@ function sairDoPrograma() {
 
 while (sairDoProgramaOuFicar) {
     let escolherAção = Number(ask.question(
-        "                                                          \n" +
-        "   ===== SISTEMA DE CADASTRO DE DOADORES DE SANGUE =====  \n" +
-        "|========================================================|\n" +
-        "| 1. Cadastrar doador                                    |\n" +
-        "|--------------------------------------------------------|\n" +
-        "| 2. Listar doadores                                     |\n" +
-        "|--------------------------------------------------------|\n" +
-        "| 3. Buscar doador por tipo sanguineo                    |\n" +
-        "|--------------------------------------------------------|\n" +
-        "| 4. Buscar doador por data da ultima doacao             |\n" +
-        "|--------------------------------------------------------|\n" +
-        "| 5. Sair                                                |\n" +
-        "|________________________________________________________|\n\n" +
+        "\n" +
+        "  ===== SISTEMA DE CADASTRO DE DOADORES DE SANGUE =====  \n" +
+        "|=======================================================|\n" +
+        "| 1. Cadastrar doador                                   |\n" +
+        "|-------------------------------------------------------|\n" +
+        "| 2. Listar doadores                                    |\n" +
+        "|-------------------------------------------------------|\n" +
+        "| 3. Buscar doador por tipo sanguineo                   |\n" +
+        "|-------------------------------------------------------|\n" +
+        "| 4. Buscar doador por data da ultima doacao            |\n" +
+        "|-------------------------------------------------------|\n" +
+        "| 5. Sair                                               |\n" +
+        "|_______________________________________________________|\n\n" +
         "escolha uma opcao ------>  "))
+
     console.clear()
 
     switch (escolherAção) { // compara o input do usuario com as opções disponiveis no sistema //
@@ -191,7 +203,7 @@ while (sairDoProgramaOuFicar) {
             buscarDoadorPorTipoSanguineo()
             break;
         case 4:
-            buscarDoadorPorDataDaUltimaDoação()
+            buscarDoadorPorDataDaUltimaDoacao()
             break;
         case 5:
             sairDoPrograma()
@@ -199,6 +211,7 @@ while (sairDoProgramaOuFicar) {
         default:
             console.log('ação escolhida inexistente!') // se nenhuma opcão for encontrada com o input do usuario,  o sistema ira avisar o usuario e retornar para o main menu //
             ask.question('tecle enter para voltar ')
+            console.clear()
             break;
     }
 }
